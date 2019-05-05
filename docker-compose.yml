@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    image: tsd1668/hello_world:latest
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - 8000:8080
