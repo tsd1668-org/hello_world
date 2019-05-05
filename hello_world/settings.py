@@ -25,7 +25,7 @@ SECRET_KEY = '6mhc*fhb^^vq6l&h+f!^!3@z8#2n&gy5e&j3y#5pehvmmbcqh#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mylab.test']
 
 
 # Application definition
