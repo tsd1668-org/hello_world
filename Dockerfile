@@ -5,6 +5,9 @@ FROM python:3.7-alpine
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# requirements for installing pyscopg2
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+
 # set work directory
 WORKDIR /usr/src/app
 
