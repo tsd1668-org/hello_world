@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'hello_world.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'invincible-whale-postgresql.default.svc.cluster.local',
+        'ENGINE': 'mypostgres-postgresql.default.svc.cluster.local',
         'NAME': 'django',
         'USER': 'djangouser',
         'PASSWORD': 'djangopassword',
