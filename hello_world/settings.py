@@ -66,11 +66,11 @@ WSGI_APPLICATION = 'hello_world.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mypostgres-postgresql.default.svc.cluster.local',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
         'USER': 'djangouser',
         'PASSWORD': 'djangopassword',
-        'HOST': 'localhost',
+        'HOST': 'mypostgres-postgresql.default.svc.cluster.local',
         'PORT': '',
     }
 }
