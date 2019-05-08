@@ -25,13 +25,11 @@ def user_detail(request, name):
     if name:
         name = name.lower()
     try:
+        user = None
         user = User.objects.get(name__iexact=name)
     except User.DoesNotExist:
         if request.method == 'GET':
             return HttpResponse(status=status.HTTP_404_NOT_FOUND)
-        else:
-            user = User(name=name, dob=request.dob)
-            user.save()
 
     if request.method == 'GET':
         user_serializer = UserSerializer(user)
@@ -39,6 +37,10 @@ def user_detail(request, name):
 
     elif request.method == 'PUT':
         user_data = JSONParser().parse(request)
+        if not user:
+            user = User(name=name, dob=user_data['dob'])
+            user.save()
+
         user_serializer = UserSerializer(user, data=user_data, partial=True)
         if user_serializer.is_valid():
             user_serializer.save()
