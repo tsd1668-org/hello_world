@@ -27,7 +27,11 @@ def user_detail(request, name):
     try:
         user = User.objects.get(name__iexact=name)
     except User.DoesNotExist:
-        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+        if request.method == 'GET':
+            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+        else:
+            user = User(name=name, dob=request.dob)
+            user.save()
 
     if request.method == 'GET':
         user_serializer = UserSerializer(user)
@@ -38,7 +42,7 @@ def user_detail(request, name):
         user_serializer = UserSerializer(user, data=user_data, partial=True)
         if user_serializer.is_valid():
             user_serializer.save()
-            return JSONResponse(status.HTTP_201_CREATED)
+            return HttpResponse(status=status.HTTP_201_CREATED)
         return JSONResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
