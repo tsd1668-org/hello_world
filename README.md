@@ -60,28 +60,28 @@ ALLOWED_HOSTS = ['mylab.test'])
 > Birthday is before current
 ```bash
 $ curl mylab.test:8000/hello/john/ -XPUT -d '{"name": "john", "dob": "2001-01-01"}'
-{"data":"Hello john!"}
+201
 $ curl mylab.test:8000/hello/john/ 
 {"data":"Hello john!"}
 ```
 > Birthday is after current
 ```bash
 $ curl mylab.test:8000/hello/john/ -XPUT -d '{"name": "john", "dob": "2001-11-11"}'
-{"data":"Hello john!"}
+201
 $ curl mylab.test:8000/hello/john/ 
 {"data":"Hello john!"}
 ```
 > Birthday is 5 days away
 ```bash
 $ curl mylab.test:8000/hello/john/ -XPUT -d '{"name": "john", "dob": "2001-05-11"}'
-{"data":"Hello john! Your birthday is in 5 days"}
+201
 $ curl mylab.test:8000/hello/john/ 
 {"data":"Hello john! Your birthday is in 5 days”}
 ```
 > Birthday is today
 ```bash
 $ curl mylab.test:8000/hello/john/ -XPUT -d '{"name": "john", "dob": "2001-05-06"}'
-{"data":"Happy birthday, john!”}
+201
 $ curl mylab.test:8000/hello/john/ 
 {"data":"Happy birthday, john!"}
 ```
