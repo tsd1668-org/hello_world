@@ -14,8 +14,6 @@ WORKDIR /usr/src/app
 # copy project
 COPY . /usr/src/app/
 
-RUN ldconfig
-
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install -r /usr/src/app/requirements.txt
