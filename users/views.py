@@ -35,7 +35,7 @@ def user_detail(request, name):
 
     elif request.method == 'PUT':
         user_data = JSONParser().parse(request)
-        user_serializer = UserSerializer(user, data=user_data)
+        user_serializer = UserSerializer(user, data=user_data, partial=True)
         if user_serializer.is_valid():
             user_serializer.save()
             return JSONResponse(status.HTTP_201_CREATED)
