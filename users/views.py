@@ -38,7 +38,7 @@ def user_detail(request, name):
         user_serializer = UserSerializer(user, data=user_data)
         if user_serializer.is_valid():
             user_serializer.save()
-            return JSONResponse(user_serializer.data)
+            return JSONResponse(status.HTTP_201_CREATED)
         return JSONResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
